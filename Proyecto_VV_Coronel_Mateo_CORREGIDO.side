@@ -1,0 +1,366 @@
+{
+  "id": "0eec1470-2f66-45ac-b969-d01e99ebc3eb",
+  "version": "2.0",
+  "name": "Proyecto_VV_Coronel_Mateo",
+  "url": "https://www.saucedemo.com",
+  "tests": [
+    {
+      "id": "409c611f-0947-44f3-a44b-3e68cd55b599",
+      "name": "CP01_Login_Exitoso",
+      "commands": [
+        {
+          "id": "51d7b1b4-e822-45e1-adfa-9df2cd707503",
+          "comment": "Abrir SauceDemo",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "15ba4695-aa9a-46c9-bfb8-7d2eadd418c6",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "baba6d15-e0d5-4c9e-9a8d-9bf2aef5a7db",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena user-name con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'standard_user');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0f9c352f-6c2c-4fae-a2b1-bad4d0480528",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena password con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'secret_sauce');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "513172d1-6d2b-4023-82f7-5c03a80da182",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [
+            [
+              "id=login-button",
+              "id"
+            ],
+            [
+              "css=#login-button",
+              "css:finder"
+            ],
+            [
+              "xpath=//input[@id='login-button']",
+              "xpath:attributes"
+            ]
+          ],
+          "value": ""
+        },
+        {
+          "id": "5f62215b-7552-4dfe-8fc1-46a92f06b1ed",
+          "comment": "Esperar el catálogo",
+          "command": "waitForElementVisible",
+          "target": "css=.inventory_list",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "072b1b88-f416-4156-895f-840b9d8e041d",
+          "comment": "Assert: título de la aplicación",
+          "command": "assertTitle",
+          "target": "Swag Labs",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "33c2d131-552f-40df-ab1e-cd674a2c692a",
+          "comment": "Assert: el usuario está en el dashboard (Products)",
+          "command": "assertText",
+          "target": "css=.title",
+          "targets": [],
+          "value": "Products"
+        },
+        {
+          "id": "3f1c825f-bc6a-4bbd-8bf4-938f2ae11ce8",
+          "comment": "Assert: contenedor de productos presente",
+          "command": "assertElementPresent",
+          "target": "id=inventory_container",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "777f1a78-60f9-4106-80f6-6b0535ef8c34",
+      "name": "CP02_Login_Fallido",
+      "commands": [
+        {
+          "id": "c6e0cd74-2b09-430a-abf5-73b4d1652654",
+          "comment": "",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9c97db5f-b47e-43ff-b6d1-93c80a4b608d",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "68de858a-6ae8-4954-b2a9-f3fe4415a69f",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena user-name con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'standard_user');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "7a144251-3517-43e2-a919-f9540e58b5bc",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena password con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'clave_incorrecta');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8844bc87-7c37-4789-9f65-73754c70c28c",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ba0f98a-7424-4c4b-ae86-2d6cb2944006",
+          "comment": "Verify: aparece el mensaje de error",
+          "command": "verifyElementPresent",
+          "target": "css=h3[data-test='error']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a7e3107b-e7d2-489f-9861-c54e7f131ed6",
+          "comment": "Verify: texto exacto del error",
+          "command": "verifyText",
+          "target": "css=h3[data-test='error']",
+          "targets": [],
+          "value": "Epic sadface: Username and password do not match any user in this service"
+        },
+        {
+          "id": "07620d83-d28c-4fed-ab76-3f110c309dd5",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena user-name con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'locked_out_user');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f63a5b64-e82c-476a-815f-e352db0271cb",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena password con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'secret_sauce');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cdfd8fd1-1b40-43ab-9dca-7f6fd10cfd69",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e200f961-ea9a-4c9b-8eaf-dd3c471509c6",
+          "comment": "Verify: mensaje de usuario bloqueado",
+          "command": "verifyText",
+          "target": "css=h3[data-test='error']",
+          "targets": [],
+          "value": "Epic sadface: Sorry, this user has been locked out."
+        }
+      ]
+    },
+    {
+      "id": "1c564150-2d7f-428a-baa9-c90dc4e0e8a6",
+      "name": "CP03_Elementos_Dinamicos_Carrito",
+      "commands": [
+        {
+          "id": "51d7b1b4-e822-45e1-adfa-9df2cd707503",
+          "comment": "Abrir SauceDemo",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "15ba4695-aa9a-46c9-bfb8-7d2eadd418c6",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "baba6d15-e0d5-4c9e-9a8d-9bf2aef5a7db",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena user-name con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'standard_user');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0f9c352f-6c2c-4fae-a2b1-bad4d0480528",
+          "comment": "Ajuste: 'type' falla en Firefox (initKeyEvent is not a function); se llena password con executeScript",
+          "command": "executeScript",
+          "target": "var e=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(e,'secret_sauce');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "513172d1-6d2b-4023-82f7-5c03a80da182",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [
+            [
+              "id=login-button",
+              "id"
+            ],
+            [
+              "css=#login-button",
+              "css:finder"
+            ],
+            [
+              "xpath=//input[@id='login-button']",
+              "xpath:attributes"
+            ]
+          ],
+          "value": ""
+        },
+        {
+          "id": "4b7d00f2-875f-4aaf-9593-6d7f93e74e1e",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=.inventory_list",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "c8eb802b-4eef-4fcd-a878-9d1466f90b9d",
+          "comment": "Filtro: ordenar por precio",
+          "command": "select",
+          "target": "css=.product_sort_container",
+          "targets": [],
+          "value": "label=Price (low to high)"
+        },
+        {
+          "id": "09eabe19-5aa7-4fb6-ad1c-f69d20350777",
+          "comment": "El producto más barato queda primero",
+          "command": "assertText",
+          "target": "xpath=(//div[@class='inventory_item_price'])[1]",
+          "targets": [],
+          "value": "$7.99"
+        },
+        {
+          "id": "089da77b-3072-4a93-989a-f85d95f933e4",
+          "comment": "Añadir mochila al carrito",
+          "command": "click",
+          "target": "id=add-to-cart-sauce-labs-backpack",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "30509726-a913-4a2e-b1cb-0553dde6e396",
+          "comment": "Esperar el contador del carrito",
+          "command": "waitForElementVisible",
+          "target": "css=.shopping_cart_badge",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "f01a25d4-7807-49f8-a00b-88be87dc33c2",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=.shopping_cart_badge",
+          "targets": [],
+          "value": "1"
+        },
+        {
+          "id": "b7337046-8555-4144-b5e9-410875621539",
+          "comment": "",
+          "command": "click",
+          "target": "css=.shopping_cart_link",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b843601d-892f-4bc7-8ba1-59fa7733c998",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=.cart_item",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "41bbdbfa-2314-4a6c-a150-e78a6445abd9",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=.inventory_item_name",
+          "targets": [],
+          "value": "Sauce Labs Backpack"
+        },
+        {
+          "id": "9e8373b4-e498-4bd5-bc76-5484b7570884",
+          "comment": "Eliminar ítem",
+          "command": "click",
+          "target": "id=remove-sauce-labs-backpack",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "122462d7-8127-4b6f-9cc7-57f5222c2f3d",
+          "comment": "El carrito queda vacío",
+          "command": "assertElementNotPresent",
+          "target": "css=.cart_item",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d1d78307-c392-47a1-8f5e-4823e0b88d88",
+          "comment": "",
+          "command": "assertElementNotPresent",
+          "target": "css=.shopping_cart_badge",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "e6fb6111-4f56-4d9e-870a-2ff184d3b0e8",
+      "name": "Suite_Regresion_Basica",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "409c611f-0947-44f3-a44b-3e68cd55b599",
+        "777f1a78-60f9-4106-80f6-6b0535ef8c34",
+        "1c564150-2d7f-428a-baa9-c90dc4e0e8a6"
+      ]
+    }
+  ],
+  "urls": [
+    "https://www.saucedemo.com/"
+  ],
+  "plugins": []
+}
